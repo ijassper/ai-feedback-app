@@ -27,13 +27,13 @@ if st.button("🤖 피드백 받기"):
         st.warning("계획서를 입력해 주세요.")
     else:
         with st.spinner("AI가 피드백을 작성 중입니다..."):
-            prompt = f\"""[기준 자료]
+            prompt = f"""[기준 자료]
 {standard_text}
 
 [사용자 입력]
 {user_input}
 
-위 기준 자료에 비추어 사용자 입력이 기준을 얼마나 충족하는지 평가하고 부족한 부분이 있다면 피드백을 제공해 주세요.\"""
+위 기준 자료에 비추어 사용자 입력이 기준을 얼마나 충족하는지 평가하고 부족한 부분이 있다면 피드백을 제공해 주세요."""
 
             try:
                 response = openai.ChatCompletion.create(
@@ -49,5 +49,6 @@ if st.button("🤖 피드백 받기"):
                 st.error(f"오류 발생: {e}")
 """
 
+# 파일로 저장
 with open("app.py", "w", encoding="utf-8") as f:
     f.write(app_code)
