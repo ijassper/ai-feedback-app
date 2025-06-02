@@ -1,12 +1,12 @@
-app_code = """
 import streamlit as st
 import openai
 
-# 환경변수 또는 사용자 입력으로 API 키 설정
-openai.api_key = st.text_input("🔑 OpenAI API 키를 입력하세요", type="password")
-
+# 페이지 설정
 st.set_page_config(page_title="AI 기준 비교 피드백 앱")
 st.title("📚 교수학습 계획서 기준 비교 피드백")
+
+# 환경변수 또는 사용자 입력으로 API 키 설정
+openai.api_key = st.text_input("🔑 OpenAI API 키를 입력하세요", type="password")
 
 # 기준 파일 불러오기
 try:
@@ -27,7 +27,7 @@ if st.button("🤖 피드백 받기"):
         st.warning("계획서를 입력해 주세요.")
     else:
         with st.spinner("AI가 피드백을 작성 중입니다..."):
-prompt = f"""[기준 자료]
+            prompt = f"""[기준 자료]
 {standard_text}
 
 [사용자 입력]
@@ -47,8 +47,3 @@ prompt = f"""[기준 자료]
                 st.write(feedback)
             except Exception as e:
                 st.error(f"오류 발생: {e}")
-"""
-
-# 파일로 저장
-with open("app.py", "w", encoding="utf-8") as f:
-    f.write(app_code)
