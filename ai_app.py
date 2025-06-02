@@ -9,7 +9,7 @@ Original file is located at
 🧩 1. 필수 패키지 설치
 """
 
-pip install streamlit openai python-docx
+
 
 """🧠 2. 기준 자료 파일 만들기 (standard.txt)"""
 
